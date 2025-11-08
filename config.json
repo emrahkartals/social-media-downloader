@@ -1,0 +1,42 @@
+{
+    "version": "1.0.0",
+    "name": "Sosyal Medya İndirici",
+    "description": "YouTube, Instagram, Twitter ve daha fazlasından içerik indirme programı",
+    "author": "AI Assistant",
+    "default_settings": {
+        "format": "mp4",
+        "quality": "best",
+        "download_folder": "~/Downloads/SocialMediaDownloads",
+        "auto_open_folder": false,
+        "timeout": 600,
+        "max_concurrent_downloads": 3
+    },
+    "supported_platforms": {
+        "youtube.com": "YouTube",
+        "youtu.be": "YouTube", 
+        "music.youtube.com": "YouTube Music",
+        "instagram.com": "Instagram",
+        "twitter.com": "Twitter/X",
+        "x.com": "Twitter/X",
+        "tiktok.com": "TikTok",
+        "facebook.com": "Facebook",
+        "fb.watch": "Facebook"
+    },
+    "formats": {
+        "video": ["mp4", "webm", "mkv", "avi"],
+        "audio": ["mp3", "wav", "flac", "aac"],
+        "quality": ["best", "worst", "720p", "480p", "360p", "240p"]
+    },
+    "features": [
+        "Çoklu platform desteği",
+        "Toplu indirme",
+        "Format seçenekleri", 
+        "Kalite kontrolü",
+        "Platform tespiti",
+        "İstatistik takibi",
+        "Modern GUI",
+        "Otomatik klasör açma",
+        "Hata yönetimi",
+        "İlerleme takibi"
+    ]
+}

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎵 Müzik & Video İndirici 🎬</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f0f0f;
+            --secondary: #1a1a1a;
+            --accent: #2a2a2a;
+            --highlight: #6366f1;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --text: #f8fafc;
+            --text-secondary: #94a3b8;
+            --card: #1a1a1a;
+            --border: #374151;
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background: var(--card) !important;
+            border-bottom: 2px solid var(--highlight);
+        }
+
+        .navbar-brand {
+            color: var(--highlight) !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card-header {
+            background: var(--accent);
+            border-bottom: 1px solid var(--border);
+            border-radius: 15px 15px 0 0 !important;
+        }
+
+        .form-control, .form-select {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            color: var(--text);
+            border-radius: 10px;
+        }
+
+        .form-control:focus, .form-select:focus {
+            background: var(--secondary);
+            border-color: var(--highlight);
+            color: var(--text);
+            box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+        }
+
+        .btn-primary {
+            background: var(--highlight);
+            border-color: var(--highlight);
+            border-radius: 10px;
+            font-weight: bold;
+        }
+
+        .btn-success {
+            background: var(--success);
+            border-color: var(--success);
+            border-radius: 10px;
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            border-color: var(--warning);
+            border-radius: 10px;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            border-color: #ef4444;
+            border-radius: 10px;
+        }
+
+        .progress {
+            background: var(--secondary);
+            border-radius: 10px;
+            height: 25px;
+        }
+
+        .progress-bar {
+            background: linear-gradient(90deg, var(--highlight), var(--success));
+            border-radius: 10px;
+        }
+
+        .log-container {
+            background: var(--secondary);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            height: 300px;
+            overflow-y: auto;
+            padding: 15px;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9rem;
+        }
+
+        .log-entry {
+            margin-bottom: 5px;
+            padding: 2px 0;
+        }
+
+        .footer {
+            background: var(--card);
+            border-top: 2px solid var(--highlight);
+            margin-top: 50px;
+            padding: 20px 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        .platform-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin: 2px;
+        }
+
+        .platform-youtube { background: #ff0000; color: white; }
+        .platform-instagram { background: #e91e63; color: white; }
+        .platform-twitter { background: #1da1f2; color: white; }
+        .platform-tiktok { background: #ff0050; color: white; }
+        .platform-facebook { background: #1877f2; color: white; }
+        .platform-unknown { background: #6b7280; color: white; }
+
+        .file-item {
+            background: var(--accent);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .file-item:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--highlight) 0%, var(--success) 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-music"></i> Zeynep ve Elif için Özel İndirici
+            </a>
+            <div class="navbar-nav ms-auto">
+                <span class="navbar-text">
+                    <i class="fas fa-heart text-danger"></i> Özel olarak hazırlanmıştır
+                </span>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1 class="hero-title">🎵 Müzik & Video İndirici 🎬</h1>
+        </div>
+
+        <div class="row">
+            <!-- Sol Kolon - İndirme Formu -->
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><i class="fas fa-download"></i> İndirme Ayarları</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="downloadForm">
+                            <div class="mb-3">
+                                <label for="urls" class="form-label">URL'ler (Her satıra bir URL)</label>
+                                <textarea class="form-control" id="urls" rows="4" 
+                                    placeholder="https://www.youtube.com/watch?v=...&#10;https://www.instagram.com/p/...&#10;https://www.tiktok.com/@..."></textarea>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label for="format" class="form-label">Format</label>
+                                    <select class="form-select" id="format">
+                                        <option value="mp4">MP4 (Video)</option>
+                                        <option value="mp3">MP3 (Ses)</option>
+                                        <option value="webm">WebM</option>
+                                        <option value="mkv">MKV</option>
+                                        <option value="avi">AVI</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="quality" class="form-label">Kalite</label>
+                                    <select class="form-select" id="quality">
+                                        <option value="best">En İyi</option>
+                                        <option value="720p">720p</option>
+                                        <option value="480p">480p</option>
+                                        <option value="360p">360p</option>
+                                        <option value="worst">En Düşük</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg w-100" id="downloadBtn">
+                                    <i class="fas fa-play"></i> İndirmeyi Başlat
+                                </button>
+                                <button type="button" class="btn btn-danger btn-lg w-100 mt-2" id="stopBtn" style="display: none;">
+                                    <i class="fas fa-stop"></i> Durdur
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6><i class="fas fa-chart-line"></i> İndirme Durumu</h6>
+                        <div class="progress mb-2">
+                            <div class="progress-bar" id="progressBar" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <small id="progressText">Hazır</small>
+                            <small id="progressPercent">0%</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sağ Kolon - Loglar ve Dosyalar -->
+            <div class="col-lg-6">
+                <!-- Loglar -->
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-terminal"></i> İndirme Logları</h5>
+                        <button class="btn btn-sm btn-outline-light" id="clearLogsBtn">
+                            <i class="fas fa-trash"></i> Temizle
+                        </button>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="log-container" id="logContainer">
+                            <div class="log-entry text-muted">
+                                <i class="fas fa-info-circle"></i> İndirme logları burada görünecek...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- İndirilen Dosyalar -->
+                <div class="card mt-3">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0"><i class="fas fa-folder-open"></i> İndirilen Dosyalar</h5>
+                        <button class="btn btn-sm btn-outline-light" id="refreshFilesBtn">
+                            <i class="fas fa-sync"></i> Yenile
+                        </button>
+                    </div>
+                    <div class="card-body" id="filesContainer">
+                        <div class="text-muted text-center">
+                            <i class="fas fa-folder-open fa-2x mb-2"></i><br>
+                            Henüz dosya indirilmedi
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p class="mb-0">
+                🎵 Bu program Zeynep ve Elif için özel olarak hazırlanmıştır. Kopyalanamaz. 🎬
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let statusInterval;
+
+        // Form submit
+        document.getElementById('downloadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const urls = document.getElementById('urls').value.split('\n').filter(url => url.trim());
+            const format = document.getElementById('format').value;
+            const quality = document.getElementById('quality').value;
+            
+            if (urls.length === 0) {
+                alert('Lütfen en az bir URL girin!');
+                return;
+            }
+            
+            fetch('/download', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    urls: urls,
+                    format: format,
+                    quality: quality
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    document.getElementById('downloadBtn').style.display = 'none';
+                    document.getElementById('stopBtn').style.display = 'block';
+                    startStatusCheck();
+                }
+            });
+        });
+
+        // Durdur butonu
+        document.getElementById('stopBtn').addEventListener('click', function() {
+            fetch('/stop', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('downloadBtn').style.display = 'block';
+                document.getElementById('stopBtn').style.display = 'none';
+                stopStatusCheck();
+            });
+        });
+
+        // Logları temizle
+        document.getElementById('clearLogsBtn').addEventListener('click', function() {
+            fetch('/clear')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('logContainer').innerHTML = 
+                    '<div class="log-entry text-muted"><i class="fas fa-info-circle"></i> Loglar temizlendi...</div>';
+            });
+        });
+
+        // Dosyaları yenile
+        document.getElementById('refreshFilesBtn').addEventListener('click', function() {
+            loadFiles();
+        });
+
+        // Durum kontrolü
+        function startStatusCheck() {
+            statusInterval = setInterval(updateStatus, 1000);
+        }
+
+        function stopStatusCheck() {
+            if (statusInterval) {
+                clearInterval(statusInterval);
+            }
+        }
+
+        function updateStatus() {
+            fetch('/status')
+            .then(response => response.json())
+            .then(data => {
+                // Progress bar
+                document.getElementById('progressBar').style.width = data.progress + '%';
+                document.getElementById('progressPercent').textContent = data.progress + '%';
+                
+                // Progress text
+                if (data.is_downloading) {
+                    document.getElementById('progressText').textContent = 
+                        `İndiriliyor (${data.completed_urls}/${data.total_urls}): ${data.current_url.substring(0, 50)}...`;
+                } else {
+                    document.getElementById('progressText').textContent = 'Hazır';
+                }
+                
+                // Loglar
+                const logContainer = document.getElementById('logContainer');
+                if (data.logs.length > 0) {
+                    logContainer.innerHTML = data.logs.map(log => 
+                        `<div class="log-entry">${log}</div>`
+                    ).join('');
+                    logContainer.scrollTop = logContainer.scrollHeight;
+                }
+                
+                // İndirme tamamlandıysa butonları güncelle
+                if (!data.is_downloading && data.completed_urls > 0) {
+                    document.getElementById('downloadBtn').style.display = 'block';
+                    document.getElementById('stopBtn').style.display = 'none';
+                    stopStatusCheck();
+                    loadFiles();
+                }
+            });
+        }
+
+        // Dosyaları yükle
+        function loadFiles() {
+            fetch('/files')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('filesContainer');
+                if (data.files && data.files.length > 0) {
+                    container.innerHTML = data.files.map(file => `
+                        <div class="file-item">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1"><i class="fas fa-file"></i> ${file.name}</h6>
+                                    <small class="text-muted">
+                                        ${(file.size / 1024 / 1024).toFixed(2)} MB - ${file.date}
+                                    </small>
+                                </div>
+                                <a href="/download_file/${file.name}" class="btn btn-sm btn-success">
+                                    <i class="fas fa-download"></i> İndir
+                                </a>
+                            </div>
+                        </div>
+                    `).join('');
+                } else {
+                    container.innerHTML = `
+                        <div class="text-muted text-center">
+                            <i class="fas fa-folder-open fa-2x mb-2"></i><br>
+                            Henüz dosya indirilmedi
+                        </div>
+                    `;
+                }
+            });
+        }
+
+        // Sayfa yüklendiğinde dosyaları yükle
+        loadFiles();
+    </script>
+</body>
+</html>
