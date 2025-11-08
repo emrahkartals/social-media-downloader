@@ -89,6 +89,10 @@ def download_single_video(url, format_type, quality):
             return True
         else:
             log_message(f"❌ İndirme hatası: {url}")
+            if result.stderr:
+                log_message(f"🔴 Hata detayı: {result.stderr[:500]}")
+            if result.stdout:
+                log_message(f"ℹ️ Çıktı: {result.stdout[:500]}")
             return False
             
     except Exception as e:
