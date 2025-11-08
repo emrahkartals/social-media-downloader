@@ -58,8 +58,20 @@ def download_single_video(url, format_type, quality):
             sys.executable, '-m', 'yt_dlp',
             '--output', f'{download_folder}/%(title)s.%(ext)s',
             '--no-warnings',
-            '--ignore-errors'
+            '--ignore-errors',
+            '--no-playlist'
         ]
+        
+        # YouTube için özel ayarlar (bot kontrolü için)
+        youtube_clients = ['android', 'ios', 'web', 'mweb', 'tv']
+        if 'youtube.com' in url.lower() or 'youtu.be' in url.lower():
+            cmd.extend([
+                '--user-agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+                '--extractor-args', f'youtube:player_client={",".join(youtube_clients)}',
+                '--no-check-certificate',
+                '--sleep-requests', '1',  # Rate limiting için
+                '--sleep-interval', '2'
+            ])
         
         # Format ayarları
         if format_type == 'mp3':
